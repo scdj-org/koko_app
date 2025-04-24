@@ -1,0 +1,12 @@
+;语言统计
+
+;忽略语言
+;*.js    linguist-detectable=false
+
+;忽略文件夹
+android/** linguist-generated
+ios/** linguist-generated
+windows/** linguist-generated
+web/** linguist-generated
+linux/** linguist-generated
+macos/** linguist-generated

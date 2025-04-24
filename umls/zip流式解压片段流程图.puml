@@ -1,0 +1,26 @@
+@startuml zip流式解压片段流程图
+
+start
+:通过文件名从中央目录 Map 获取文件信息;
+:调用 extractZipEntry;
+:检查 ZIP 本地文件头;
+if (文件头有效?) then (是)
+  :解析文件头信息 (压缩方式、数据偏移量等);
+  if (压缩方式 == 无压缩) then (是)
+    :直接返回文件数据;
+  else if (压缩方式 == DEFLATE) then (是)
+    :解压文件数据 (DEFLATE 解压);
+  else (否)
+    :抛出错误 "不支持的压缩方式";
+    stop
+  endif
+else (否)
+  :抛出错误 "不是 ZIP 本地文件头";
+  stop
+endif
+
+:返回解压后的文件数据;
+
+stop
+
+@enduml

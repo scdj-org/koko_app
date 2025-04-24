@@ -1,0 +1,67 @@
+@startuml 系统架构图
+
+skinparam component {
+    BackgroundColor LightBlue
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam node {
+    BackgroundColor LightYellow
+    BorderColor Black
+    FontColor Black
+}
+
+skinparam package {
+    BackgroundColor LightGray
+    BorderColor Black
+    FontColor Black
+}
+
+node "koko_app" {
+    package "UI渲染层" as ui {
+        component "Overlay悬浮组件" as Overlay
+        component "Widgets基础组件" as Widgets
+        component "路由页面" as Router
+    }
+
+    package "数据模型层" as data {
+        component "实体模型" as EntityModel
+        component "状态管理模型" as StateModel
+    }
+
+    package "数据接口层" as intf {
+        component "数据接口" as DataInterface
+    }
+
+    package "资源服务器层" as source {
+        component "本地文件" as LocalFile
+        component "WebDAV协议" as WebDAV
+        component "SMB协议" as SMB
+        component "..." as ext
+    }
+
+    component "状态管理层" as StateManager
+}
+
+Overlay --> Router : 调用路由
+Widgets --> Router : 调用路由
+Router --> EntityModel : 使用实体模型
+Router --> StateModel : 使用状态管理模型
+EntityModel --> DataInterface : 数据交互
+StateModel --> DataInterface : 状态同步
+DataInterface --> LocalFile : 访问本地文件
+DataInterface --> WebDAV : 访问WebDAV
+DataInterface --> SMB : 访问SMB
+DataInterface --> ext : 访问其他协议
+
+StateManager .right.> ui : 状态管理
+StateManager .right.> data : 状态管理
+StateManager .right.> intf : 状态管理
+
+ui -[hidden]down-> data
+data -[hidden]down-> intf
+intf -[hidden]down-> source
+WebDAV -[hidden]right-> ext
+
+@enduml

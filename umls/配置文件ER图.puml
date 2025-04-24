@@ -1,0 +1,41 @@
+@startuml 配置文件ER图
+
+entity global_profile {
+  + themeColor : String
+  + locale : String
+  + buttonTips : bool
+  + defaultPageMode : $page_profile
+  + netDevices : List<$net_device>
+  + maxCacheFileSize : int
+  + defaultEpubConf : $epub_conf
+}
+
+entity page_profile {
+  + pageStyleMode : int
+  + PageSortedModeEnum : int
+  + gridCrossCount : int
+}
+
+entity net_device {
+  + id : int
+  + baseurl : String
+  + protocol : int
+  + root_path : String
+  + name : String
+  + port : int
+  + account : String
+  + password : String
+}
+
+entity epub_conf {
+  + fontsize : int
+  + preloadNum : int
+  + withTheme : bool
+}
+
+' 关系定义
+global_profile::defaultPageMode --> page_profile
+global_profile::netDevices --> net_device
+global_profile::defaultEpubConf --> epub_conf
+
+@enduml
