@@ -1,0 +1,18 @@
+@startuml 用户用力图
+
+actor 用户 as user
+
+package koko_app {
+  [文件管理] as f
+  [多媒体阅读] as r
+  [辅助功能] as h
+}
+
+user --> f : 操作
+user --> r : 使用
+user --> h : 更改设置
+f --> r : 访问
+h --> f : 协助
+h --> r : 协助
+
+@enduml

@@ -1,0 +1,6 @@
+<paths>
+  <!-- 允许访问缓存目录 -->
+  <cache-path name="cache" path="." />
+  <!-- 允许访问外部存储 -->
+  <external-path name="external_files" path="Download/" />
+</paths>

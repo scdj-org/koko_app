@@ -1,0 +1,27 @@
+@startuml zip流式解压中央目录流程图
+
+start
+:调用 parseZipDirectory;
+:读取 ZIP 文件尾部数据 (64KB);
+if (找到 EOCD?) then (是)
+  :解析 EOCD 获取 Central Directory 偏移量;
+else (否)
+  :抛出错误 "未找到 ZIP 目录索引";
+  stop
+endif
+
+:解析 Central Directory;
+repeat
+  :读取文件头信息 (文件名、偏移量、压缩大小等);
+  if (还有文件头?) then (是)
+    :将文件信息存入中央目录 Map;
+  else (否)
+    break
+  endif
+repeat while (未解析完所有文件头)
+
+:返回中央目录 Map;
+
+stop
+
+@enduml

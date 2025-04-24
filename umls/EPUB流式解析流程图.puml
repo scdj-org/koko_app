@@ -1,0 +1,27 @@
+@startuml EPUB流式解析流程图
+
+start
+:用户点击 EPUB 文件;
+:进入 EPUB 解析器;
+:EPUB 文件初始化;
+:调用 ZIP 流式解压模块;
+:获取中央目录表;
+
+:从中央目录表获取 META-INF/container.xml;
+:通过 ZIP 流式解压模块解压 container.xml;
+:解析 container.xml 获取 OPF 文件路径;
+
+:解析 OPF 文件;
+:获取书籍信息 (目录、书籍索引、书籍名等);
+:用 KokoEpubBook 数据模型存储书籍信息;
+:完成初始化过程;
+
+:用户跳转或顺序阅读某一页;
+:从中央目录表获取对应文件的中央目录记录;
+:调用 ZIP 流式解压模块解压该片段;
+:返回解压数据;
+:渲染页面;
+
+stop
+
+@enduml

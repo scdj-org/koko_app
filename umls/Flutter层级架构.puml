@@ -1,0 +1,23 @@
+@startuml 系统层级架构图
+
+node node[
+  框架层
+  ....
+  纯Dart实现的SDK，Flutter基础库，提供了基础组件库、
+  渲染层、系统接口（手势），开发者与Flutter在该层进行
+  交互。
+  ===
+  引擎层
+  ....
+  Flutter 的核心， 该层主要是 C++ 实现，其中包括了 
+  Skia 引擎、Dart 运行时（Dart runtime）、文字排版
+  引擎等。此处进行绘制和显示。
+  ===
+  嵌入层
+  ....
+Embedder，即嵌入层。Flutter 最终渲染、交互是要依赖
+其所在平台的操作系统 API，嵌入层主要是将 Flutter 引
+擎 ”安装“ 到特定平台上。
+]
+
+@enduml

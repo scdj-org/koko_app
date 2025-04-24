@@ -1,0 +1,8 @@
+{
+    "themeColorKey": "pink",
+    "locale?": "zh_CN",
+    "defaultPageMode": "$pageProfile",
+    "netDevices": "$[]netDevice",
+    "maxCacheFileSize": 114514,
+    "defaultEpubConf": "$epubProfile"
+}

@@ -1,0 +1,25 @@
+@startuml 通用Overlay弹窗流程图
+
+start
+:用户触发显示Overlay;
+if (Overlay已显示?) then (是)
+  :直接返回，避免重复显示;
+  stop
+else (否)
+  :创建OverlayEntry;
+  :插入Overlay到页面;
+  :设置Overlay为可见状态;
+endif
+
+repeat
+    :用户与Overlay交互;
+    if (用户触发关闭Overlay?) then (是)
+    :移除OverlayEntry;
+    :设置Overlay为不可见状态;
+    stop
+    else (否)
+    :保持Overlay显示;
+    endif
+repeat while (用户未关闭Overlay)
+
+@enduml

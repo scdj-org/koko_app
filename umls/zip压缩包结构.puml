@@ -1,0 +1,33 @@
+@startuml zip压缩包结构
+
+node node [
+    <b><font color=blue>Local File Header 1</font></b>
+    ----
+    <font color=green>File Data 1</font>
+    ----
+    <font color=red>Data Descriptor 1</font>
+    ====
+    <b><font color=blue>Local File Header 2</font></b>
+    ----
+    <font color=green>File Data 2</font>
+    ----
+    <font color=red>Data Descriptor 2</font>
+    ====
+    ....
+    ====
+    <b><font color=blue>Local File Header n</font></b>
+    ----
+    <font color=green>File Data n</font>
+    ----
+    <font color=red>Data Descriptor n</font>
+    ====
+    <font color=purple>Central Directory Record 1</font>
+    ====
+    <font color=purple>Central Directory Record 2</font>
+    ====
+    ....
+    ====
+    <font color=orange>End of Central Directory Record</font>
+]
+
+@enduml
