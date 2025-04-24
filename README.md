@@ -1,5 +1,7 @@
 # koko_app
 
+koko_app客户端
+
 A new Flutter project.
 
 flutter构建的兼容安卓、iOS、Web(也许)、PC的客户端
