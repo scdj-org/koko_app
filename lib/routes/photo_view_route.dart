@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:koko/common/custom_image_cache_manager.dart';
 import 'package:path/path.dart' as p;
 import 'package:photo_view/photo_view.dart';
 
@@ -48,6 +49,7 @@ class _PhotoViewRouteState extends State<PhotoViewRoute> {
         imageProvider: CachedNetworkImageProvider(
           widget.url,
           headers: widget.headers,
+          cacheManager: CustomImageCacheManager(),
         ),
       ),
     );

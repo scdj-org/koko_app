@@ -1,11 +1,11 @@
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:koko/common/custom_image_cache_manager.dart';
 import 'package:koko/common/global.dart';
 import 'package:koko/interface/data_source_manager_interface.dart';
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart';
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 /// Application Cache目录的管理器（单例模式）
 ///
@@ -217,12 +217,12 @@ class ApplicationCacheManager {
 
   /// 获取 CachedNetworkImage 缓存的总大小
   Future<String> getCachedNetworkImageSize() async {
-    var size = await DefaultCacheManager().store.getCacheSize();
+    var size = await CustomImageCacheManager().store.getCacheSize();
     return DataSourceManagerInterface.formatBytes(size);
   }
 
   /// 清空图片缓存
   Future<void> clearNetworkImageCache() async {
-    await DefaultCacheManager().emptyCache();
+    await CustomImageCacheManager().emptyCache();
   }
 }
